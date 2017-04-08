@@ -1,0 +1,137 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:2:1-60:12
+	package
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:3:5-53
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+uses-feature#android.hardware.camera
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:6:5-60
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:6:19-57
+uses-feature#android.hardware.location.gps
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:7:19-65
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:10:22-78
+uses-permission#android.permission.CAMERA
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:13:5-65
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:13:22-62
+uses-permission#android.hardware.camera.autofocus
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:15:5-73
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:15:22-70
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:18:5-80
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:18:22-78
+uses-permission#android.permission.LOCATION
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:21:5-66
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:21:22-64
+application
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:24:5-58:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\169227604807edc67319125cfb11f0b32002af01\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\4f8b18890d7d74974fc565da8ee2f84c6f3fb1fd\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\a2ce534bfd923bc3b6f3d99aa432a025a98a5da7\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\9342e734a8c9027be6bdb39bb71843d5283ddfa5\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\a1ae63c9626460597d6cabad3209a9ff572838b5\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\101359830ab08da86a962d832ea8ceb79163e8e7\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\13c3af0cdeba83170e950f1632e7ccfbe7f6df52\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\ec8a833da71e33166a721532ed870fd866c206e1\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\3733a6d081e4c901e94daa580f7b7074e4f28109\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\f4d31ce22b4de7c66f50707b0d1c46179509b397\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:27:9-41
+	android:supportsRtl
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:29:9-35
+	android:hardwareAccelerated
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:30:9-44
+	android:roundIcon
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:28:9-54
+	android:allowBackup
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:25:9-35
+	android:icon
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:26:9-43
+	android:largeHeap
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:31:9-33
+	android:theme
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:32:9-59
+activity#com.imaginarywings.capstonedesign.remo.MainActivity
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:34:9-40:20
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:34:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:35:13-39:29
+action#android.intent.action.MAIN
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:36:17-69
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:36:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:38:17-77
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:38:27-74
+activity#com.imaginarywings.capstonedesign.remo.PeopleActivity
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:43:9-46:20
+	android:label
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:44:13-37
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:43:19-49
+activity#com.imaginarywings.capstonedesign.remo.LandscapeActivity
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:48:9-51:20
+	android:label
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:49:13-38
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:48:19-52
+activity#com.imaginarywings.capstonedesign.remo.CameraActivity
+ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:53:9-56:20
+	android:label
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:54:13-37
+	android:name
+		ADDED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:53:19-49
+uses-sdk
+INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\169227604807edc67319125cfb11f0b32002af01\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\4f8b18890d7d74974fc565da8ee2f84c6f3fb1fd\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\a2ce534bfd923bc3b6f3d99aa432a025a98a5da7\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\9342e734a8c9027be6bdb39bb71843d5283ddfa5\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\a1ae63c9626460597d6cabad3209a9ff572838b5\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\101359830ab08da86a962d832ea8ceb79163e8e7\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\13c3af0cdeba83170e950f1632e7ccfbe7f6df52\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\ec8a833da71e33166a721532ed870fd866c206e1\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\3733a6d081e4c901e94daa580f7b7074e4f28109\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\f4d31ce22b4de7c66f50707b0d1c46179509b397\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\169227604807edc67319125cfb11f0b32002af01\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidWorkspace\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\169227604807edc67319125cfb11f0b32002af01\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\4f8b18890d7d74974fc565da8ee2f84c6f3fb1fd\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\a2ce534bfd923bc3b6f3d99aa432a025a98a5da7\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\9342e734a8c9027be6bdb39bb71843d5283ddfa5\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\a1ae63c9626460597d6cabad3209a9ff572838b5\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\101359830ab08da86a962d832ea8ceb79163e8e7\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\13c3af0cdeba83170e950f1632e7ccfbe7f6df52\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\ec8a833da71e33166a721532ed870fd866c206e1\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\3733a6d081e4c901e94daa580f7b7074e4f28109\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\169227604807edc67319125cfb11f0b32002af01\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\default.DESKTOP-D2HJFCT\.android\build-cache\169227604807edc67319125cfb11f0b32002af01\output\AndroidManifest.xml:26:9-47
