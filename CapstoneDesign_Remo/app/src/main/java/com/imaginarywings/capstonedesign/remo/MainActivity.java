@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMovePeople;
+    ImageButton btnMoveLandscape;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +23,21 @@ public class MainActivity extends AppCompatActivity {
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         btnMovePeople = (ImageButton) findViewById(R.id.btnPeople);
+        btnMoveLandscape = (ImageButton) findViewById(R.id.btnLandscape);
 
         btnMovePeople.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent peopleIntent = new Intent(getApplicationContext(), PeopleActivity.class);
-
                 startActivity(peopleIntent);
+            }
+        });
+
+        btnMoveLandscape.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent landscapeIntent = new Intent(getApplicationContext(), LandscapeActivity.class);
+                startActivity(landscapeIntent);
             }
         });
 
