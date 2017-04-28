@@ -3,11 +3,11 @@
     package="com.imaginarywings.capstonedesign.remo.test" >
 
     <uses-sdk
-        android:minSdkVersion="21"
+        android:minSdkVersion="18"
         android:targetSdkVersion="23" />
 
     <instrumentation
-        android:name="android.support.test.runner.AndroidJUnitRunner"
+        android:name="android.test.InstrumentationTestRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
         android:label="Tests for com.imaginarywings.capstonedesign.remo"
