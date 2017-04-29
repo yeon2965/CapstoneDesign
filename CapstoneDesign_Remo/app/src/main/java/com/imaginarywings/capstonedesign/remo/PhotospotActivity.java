@@ -1,14 +1,19 @@
 package com.imaginarywings.capstonedesign.remo;
 
+import android.Manifest;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.gun0912.tedpermission.TedPermission;
 import com.imaginarywings.capstonedesign.remo.model.PhotoSpotModel;
 import com.imaginarywings.capstonedesign.remo.navermap.NMapPOIflagType;
 import com.imaginarywings.capstonedesign.remo.navermap.NMapViewerResourceProvider;
@@ -59,6 +64,7 @@ public class PhotospotActivity extends NMapActivity {
         setContentView(mMapView);
 
         ButterKnife.bind(this);
+        checkGPSPermissions();
 
         /*
         1. 맵의 기초적인 부분을 설정한다.
@@ -67,7 +73,6 @@ public class PhotospotActivity extends NMapActivity {
          */
 
         setNaverMap();
-
     }
 
     @Override
@@ -139,6 +144,7 @@ public class PhotospotActivity extends NMapActivity {
         }
     };
 
+    //네이버 맵 초기 셋팅
     private void setNaverMap() {
         mMapView.setOnMapStateChangeListener(mStateChangeListener);
         mMapView.setClickable(true);
@@ -155,6 +161,7 @@ public class PhotospotActivity extends NMapActivity {
         mMapResourceProvider = new NMapViewerResourceProvider(this);
     }
 
+    //위치 초기화
     private void startMyLocation() {
         mMapLocationManager = new NMapLocationManager(this);
         mMapLocationManager.setOnLocationChangeListener(mLocationChangeListener);
@@ -166,6 +173,7 @@ public class PhotospotActivity extends NMapActivity {
         }
     }
 
+    //포토스팟 마커 만들기
     private void createSpotMarker() {
         int markerId = NMapPOIflagType.PIN;
 
@@ -217,4 +225,27 @@ public class PhotospotActivity extends NMapActivity {
 
         mMapOverlayManager.addOverlay(poiDataOverlay);
     }
+
+    //GPS 퍼미션 요청
+    private void checkGPSPermissions() {
+        new TedPermission(this)
+                .setPermissionListener(this)
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
+                .check();
+    }
+
+    //GPS 기능 확인
+    private void checkLocationEnabled() {
+        /*
+        if (!SmartLocation.with(this).location().state().isGpsAvailable()) {
+            Toast.makeText(this, "GPS기능을 활성화 해주시기 바랍니다.", Toast.LENGTH_SHORT).show();
+            Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivityForResult(goToSettings, REQUEST_LOCATION_ENABLE);
+        } else {
+            mButtonLayout.setVisibility(View.VISIBLE);
+            */
+        }
+    }
+
 }
