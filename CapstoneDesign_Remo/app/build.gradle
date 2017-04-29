@@ -33,15 +33,27 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    //네이버 맵 라이브러리
     compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
+
+    //테드 퍼미션 라이브러리
     compile 'gun0912.ted:tedpermission:1.0.3'
 
+    //버터나이프 라이브러리
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
-    compile('io.nlopez.smartlocation:library:3.3.1') {
-        transitive = false;
-    }
+    //스마트 로케이션 라이브러리
+    compile 'io.nlopez.smartlocation:library:3.3.1'
+
+    //constraint 레이아웃
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //gpuimage 라이브러리
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
     testCompile 'junit:junit:4.12'
 }

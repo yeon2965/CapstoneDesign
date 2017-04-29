@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.imaginarywings.capstonedesign.remo.model.PhotoSpotModel;
 import com.imaginarywings.capstonedesign.remo.navermap.NMapPOIflagType;
@@ -30,7 +31,10 @@ import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
+import io.nlopez.smartlocation.SmartLocation;
 
 /**
  * Created by S.JJ on 2017-04-11.
@@ -42,10 +46,12 @@ public class PhotospotActivity extends NMapActivity {
     //현재 클래스명 얻어오기
     private final String TAG = getClass().getSimpleName();
 
-    private  static final String TAG_SPOT_DETAIL_DIALOG = "SpotDetailDialog";
+    private static final String TAG_SPOT_DETAIL_DIALOG = "SpotDetailDialog";
 
     //애플리케이션 클라이언트 아이디 값( API 키 )
     private final String CLIENT_ID = "xQ50GyWn_EU3eQE4A1sL";
+    private static final int REQUEST_LOCATION_ENABLE = 717;
+
 
     private NMapView mMapView;  //지도 화면 View
     private NMapController mMapController;
@@ -64,6 +70,7 @@ public class PhotospotActivity extends NMapActivity {
         setContentView(mMapView);
 
         ButterKnife.bind(this);
+
         checkGPSPermissions();
 
         /*
@@ -71,14 +78,23 @@ public class PhotospotActivity extends NMapActivity {
         2. 맵이 정상적으로 초기화가 되면 현재 위치르 가져오게 하낟.
         3. 현재 위치가 정상적으로 확인되면 마커를 생성한다.
          */
-
         setNaverMap();
     }
 
     @Override
-    protected void onDestroy() {
-        if(mMapLocationManager.isMyLocationEnabled())
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQUEST_LOCATION_ENABLE)
         {
+            checkLocationEnabled();
+        }
+        else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mMapLocationManager.isMyLocationEnabled()) {
             mMapLocationManager.disableMyLocation();
             mMapLocationManager.setOnLocationChangeListener(null);
         }
@@ -89,15 +105,14 @@ public class PhotospotActivity extends NMapActivity {
     }
 
     /* 리스너 */
-    private NMapView.OnMapStateChangeListener mStateChangeListener = new NMapView.OnMapStateChangeListener()
-    {
+    private NMapView.OnMapStateChangeListener mStateChangeListener = new NMapView.OnMapStateChangeListener() {
         @Override
         public void onMapInitHandler(NMapView mapView, NMapError errorInfo) {
             if (errorInfo == null) {
                 // 초기 위치 설정
                 mMapController.setMapCenter(new NGeoPoint(127.131342, 35.847532), 11);
 
-                startMyLocation();    //사용자 정의 함수!
+                //startMyLocation();    //사용자 정의 함수!
 
             } else {
                 Toast.makeText(PhotospotActivity.this, "지도를 초기화하는데 실패하였습니다.\nmessage: " + errorInfo.message, Toast.LENGTH_SHORT).show();
@@ -159,6 +174,7 @@ public class PhotospotActivity extends NMapActivity {
 
         mMapController = mMapView.getMapController();
         mMapResourceProvider = new NMapViewerResourceProvider(this);
+        mMapOverlayManager = new NMapOverlayManager(this, mMapView, mMapResourceProvider);
     }
 
     //위치 초기화
@@ -183,12 +199,12 @@ public class PhotospotActivity extends NMapActivity {
 
         // set POI data
         NMapPOIdata poiData = new NMapPOIdata(2, mMapResourceProvider);
-//        poiData.beginPOIdata(2);
+
         // 경도, 위도, 타이틀, 마커타입, 사용자오브젝트, 번호
         poiData.addPOIitem(127.130746, 35.847756, null, markerId, model1, 1);
         poiData.addPOIitem(127.132028, 35.847834, null, markerId, model2, 2);
         poiData.addPOIitem(127.123735, 35.847722, null, markerId, model3, 3);
-//        poiData.endPOIdata();
+        //poiData.endPOIdata();
 
         // create POI data overlay
         NMapPOIdataOverlay poiDataOverlay = mMapOverlayManager.createPOIdataOverlay(poiData, null);
@@ -226,10 +242,25 @@ public class PhotospotActivity extends NMapActivity {
         mMapOverlayManager.addOverlay(poiDataOverlay);
     }
 
+    //퍼미션 리스터 인터페이스 오버라이드
+    PermissionListener permissionlistener = new PermissionListener() {
+        @Override
+        public void onPermissionGranted() {
+            checkLocationEnabled();
+            startMyLocation();
+        }
+
+        @Override
+        public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+            Toast.makeText(PhotospotActivity.this, "권한이 허용되지 않아서 앱을 이용할 수 없습니다.", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
     //GPS 퍼미션 요청
     private void checkGPSPermissions() {
         new TedPermission(this)
-                .setPermissionListener(this)
+                .setPermissionListener(permissionlistener)
                 .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
                 .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
                 .check();
@@ -237,15 +268,12 @@ public class PhotospotActivity extends NMapActivity {
 
     //GPS 기능 확인
     private void checkLocationEnabled() {
-        /*
         if (!SmartLocation.with(this).location().state().isGpsAvailable()) {
             Toast.makeText(this, "GPS기능을 활성화 해주시기 바랍니다.", Toast.LENGTH_SHORT).show();
             Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivityForResult(goToSettings, REQUEST_LOCATION_ENABLE);
         } else {
-            mButtonLayout.setVisibility(View.VISIBLE);
-            */
+            //mButtonLayout.setVisibility(View.VISIBLE);
         }
     }
-
 }
