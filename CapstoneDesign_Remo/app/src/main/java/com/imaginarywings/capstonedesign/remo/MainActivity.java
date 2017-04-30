@@ -1,12 +1,9 @@
 package com.imaginarywings.capstonedesign.remo;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //상태 알림바 없애기
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         btnMovePeople = (ImageButton) findViewById(R.id.btnPeople);
         btnMoveLandscape = (ImageButton) findViewById(R.id.btnLandscape);
@@ -52,4 +46,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }

@@ -22,24 +22,20 @@
         android:layout_marginTop="7dp"
         android:id="@+id/imageView2" />
 
-    <Button
+    <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/imageView"
+        android:layout_toStartOf="@+id/btnCamera" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
         android:id="@+id/btnCamera"
         android:text="카메라"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
-
-    //에디트 텍스트 테스트
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnEditTest"
-        android:text="Edit Text"
-        android:textColor="#FF000000"
-        android:layout_alignTop="@+id/btnCamera"
-        android:layout_toStartOf="@+id/btnCamera"
-        android:layout_marginEnd="17dp" />
 
 </RelativeLayout>

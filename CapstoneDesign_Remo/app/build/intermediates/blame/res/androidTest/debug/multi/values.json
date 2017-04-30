@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "outputFile": "D:\\AndroidWorkspace\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\tip90\\.android\\build-cache\\95483acaecc9847772801e55f3b1cad25032b335\\output\\res\\values\\values.xml",
+                    "file": "C:\\Users\\default.DESKTOP-D2HJFCT\\.android\\build-cache\\9624552d62c8a3f7102dc5de3fc14ab1aaa831e9\\output\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
