@@ -23,11 +23,67 @@
         android:id="@+id/imageView2" />
 
     <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src = "@drawable/p01"
+        android:background="#FFFFFF"
+        android:layout_marginTop="33dp"
+        android:id="@+id/ImgBtn_p01"
         android:layout_below="@+id/imageView"
-        android:layout_toStartOf="@+id/btnCamera" />
+        android:layout_toStartOf="@+id/imageView2" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src = "@drawable/p02"
+        android:background="#FFFFFF"
+        android:id="@+id/imgBtn_p02"
+        android:layout_alignTop="@+id/ImgBtn_p01"
+        android:layout_toEndOf="@+id/imageView2" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src = "@drawable/p03"
+        android:background="#FFFFFF"
+        android:id="@+id/imgBtn_p03"
+        android:layout_below="@+id/ImgBtn_p01"
+        android:layout_alignStart="@+id/ImgBtn_p01"
+        android:layout_marginTop="30dp" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src = "@drawable/p04"
+        android:background="#FFFFFF"
+        android:id="@+id/imgBtn_p04"
+        android:layout_alignTop="@+id/imgBtn_p03"
+        android:layout_alignStart="@+id/imgBtn_p02" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src = "@drawable/p05"
+        android:background="#FFFFFF"
+        android:id="@+id/imgBtn_p05"
+        android:layout_below="@+id/imgBtn_p03"
+        android:layout_alignStart="@+id/imgBtn_p03"
+        android:layout_marginTop="28dp" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src = "@drawable/p06"
+        android:background="#FFFFFF"
+        android:id="@+id/imgBtn_p06"
+        android:layout_alignTop="@+id/imgBtn_p05"
+        android:layout_alignStart="@+id/imgBtn_p04" />
 
     <Button
         android:layout_width="wrap_content"
@@ -35,7 +91,7 @@
 
         android:id="@+id/btnCamera"
         android:text="카메라"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/imgBtn_p05"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
