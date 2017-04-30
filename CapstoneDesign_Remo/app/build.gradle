@@ -55,5 +55,8 @@ dependencies {
     //gpuimage 라이브러리
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
 
+    //gif 이미지 파일 추가 가능 라이브러리
+    compile 'com.koushikdutta.ion:ion:2.+'
+
     testCompile 'junit:junit:4.12'
 }

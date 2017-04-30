@@ -221,13 +221,12 @@ public class PhotospotActivity extends NMapActivity {
                         manager.beginTransaction().remove(frag).commit();
                     }
 
-                    /* 포토스팟을 눌렀을 때 나오는 팝업창!! SpotDetailDialog 라는 클래스 먼저 구현하자
+                    //포토스팟을 눌렀을 때 나오는 팝업창
                     SpotDetailDialog dialog = new SpotDetailDialog();
                     Bundle data = new Bundle();
                     data.putParcelable("detail", model);
                     dialog.setArguments(data);
                     dialog.show(manager, TAG_SPOT_DETAIL_DIALOG);
-                    */
                 }
             }
 

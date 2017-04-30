@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:2:1-76:12
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:2:1-78:12
 	package
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:4:5-53
 		INJECTED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
@@ -25,6 +25,8 @@ ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\mai
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:8:19-65
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:11:5-66
+MERGED from [com.koushikdutta.ion:ion:2.1.9] C:\Users\tip90\.android\build-cache\ec4e7bbb6f2fe1fe4b3df09b259658b5bc93b517\output\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.1.9] C:\Users\tip90\.android\build-cache\d8f19bb67bcbd4ff002898fe31418b944aa557a7\output\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:11:22-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
@@ -62,7 +64,7 @@ ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\mai
 	android:name
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:32:22-70
 application
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:34:5-74:19
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:34:5-76:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\tip90\.android\build-cache\22678e74f916f50b42d1b9388cecceb26cefb6ca\output\AndroidManifest.xml:9:5-20
 MERGED from [com.naver.maps.open:naver-map-api:2.1.2] C:\Users\tip90\.android\build-cache\4eddb258dc205dbbd9b2f1f624bbcfbdebc1f7ec\output\AndroidManifest.xml:11:5-14:19
 MERGED from [gun0912.ted:tedpermission:1.0.3] C:\Users\tip90\.android\build-cache\2aca99712ef096ced60bdf339947fbb4d28536a4\output\AndroidManifest.xml:9:5-13:19
@@ -80,6 +82,8 @@ MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\tip90\.an
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\tip90\.android\build-cache\d1ba40854bb60c41f0035696bba6732ec3714306\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\tip90\.android\build-cache\d5f82c141cecf54817e7d2dc3aba6ba2a4813fbd\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\tip90\.android\build-cache\23d276acde1b86161c165b1b2d178af3d97dc258\output\AndroidManifest.xml:29:5-20
+MERGED from [com.koushikdutta.ion:ion:2.1.9] C:\Users\tip90\.android\build-cache\ec4e7bbb6f2fe1fe4b3df09b259658b5bc93b517\output\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.async:androidasync:2.1.9] C:\Users\tip90\.android\build-cache\d8f19bb67bcbd4ff002898fe31418b944aa557a7\output\AndroidManifest.xml:13:5-14:19
 	android:label
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:38:9-41
 	android:supportsRtl
@@ -126,17 +130,21 @@ ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\mai
 	android:name
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:59:19-52
 activity#com.imaginarywings.capstonedesign.remo.CameraActivity
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:64:9-67:20
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:64:9-68:20
 	android:label
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:65:13-37
+	android:theme
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:66:13-63
 	android:name
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:64:19-49
 activity#com.imaginarywings.capstonedesign.remo.PhotospotActivity
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:69:9-72:20
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:70:9-74:20
 	android:label
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:70:13-38
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:72:13-38
+	android:theme
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:71:13-63
 	android:name
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:69:19-52
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:70:19-52
 uses-sdk
 INJECTED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\tip90\.android\build-cache\22678e74f916f50b42d1b9388cecceb26cefb6ca\output\AndroidManifest.xml:5:5-7:41
@@ -158,6 +166,8 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\tip90\.android
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\tip90\.android\build-cache\d5f82c141cecf54817e7d2dc3aba6ba2a4813fbd\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\tip90\.android\build-cache\23d276acde1b86161c165b1b2d178af3d97dc258\output\AndroidManifest.xml:21:5-23:58
 MERGED from [jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1] C:\Users\tip90\.android\build-cache\5b384056376cc9ec8b13c1fdf256541d26a4b88b\output\AndroidManifest.xml:8:5-10:41
+MERGED from [com.koushikdutta.ion:ion:2.1.9] C:\Users\tip90\.android\build-cache\ec4e7bbb6f2fe1fe4b3df09b259658b5bc93b517\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.async:androidasync:2.1.9] C:\Users\tip90\.android\build-cache\d8f19bb67bcbd4ff002898fe31418b944aa557a7\output\AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\tip90\.android\build-cache\e255bd8108147683e1767c5600676b3685a86718\output\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
