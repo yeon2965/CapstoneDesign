@@ -237,8 +237,8 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
     public Drawable[] getLocationDot() {
         Drawable[] drawable = new Drawable[2];
 
-        drawable[0] = ContextCompat.getDrawable(mContext, R.drawable.currentposition_on);
-        drawable[1] = ContextCompat.getDrawable(mContext, R.drawable.currentposition_off);
+        drawable[0] = ContextCompat.getDrawable(mContext, R.drawable.pubtrans_ic_mylocation_on);
+        drawable[1] = ContextCompat.getDrawable(mContext, R.drawable.pubtrans_ic_mylocation_off);
 
         for (int i = 0; i < drawable.length; i++) {
             int w = drawable[i].getIntrinsicWidth() / 2;
@@ -254,7 +254,7 @@ public class NMapViewerResourceProvider extends NMapResourceProvider implements
     public Drawable getDirectionArrow() {
 
 //		Drawable drawable = mContext.getResources().getDrawable(R.drawable.ic_angle);
-        Drawable drawable = ContextCompat.getDrawable(mContext, R.drawable.currentposition_on);
+        Drawable drawable = ContextCompat.getDrawable(mContext, R.drawable.pubtrans_ic_mylocation_on);
         if (drawable != null) {
             int w = drawable.getIntrinsicWidth() / 2;
             int h = drawable.getIntrinsicHeight() / 2;
