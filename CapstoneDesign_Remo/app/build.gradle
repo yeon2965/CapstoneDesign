@@ -27,6 +27,7 @@ android {
 
 
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -50,17 +51,27 @@ dependencies {
     //gif 이미지 파일 추가 가능 라이브러리
 
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
+
     compile 'gun0912.ted:tedpermission:1.0.3'
+
     compile 'com.jakewharton:butterknife:8.5.1'
+
     compile 'io.nlopez.smartlocation:library:3.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
     compile 'com.github.bumptech.glide:glide:3.7.0'
+
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
     compile 'com.koushikdutta.ion:ion:2.+'
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-v4:22.1.1'
+
     testCompile 'junit:junit:4.12'
+
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

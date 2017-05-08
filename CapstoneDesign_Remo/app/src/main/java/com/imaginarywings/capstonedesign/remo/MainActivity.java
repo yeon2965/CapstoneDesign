@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.imaginarywings.capstonedesign.remo.navermap.FragmentMapActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMovePeople;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnMovePhotospot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photospotIntent = new Intent(getApplicationContext(), PhotospotActivity.class);
+                Intent photospotIntent = new Intent(getApplicationContext(), FragmentMapActivity.class);
                 startActivity(photospotIntent);
             }
         });

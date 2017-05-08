@@ -73,6 +73,13 @@
             android:label="Photospot"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
+            android:name="com.imaginarywings.capstonedesign.remo.PhotospotFragment"
+            android:label="@string/title_activity_photospot_fragment"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.imaginarywings.capstonedesign.remo.navermap.FragmentMapActivity"
+            android:label="FragmentMap" />
+        <activity
             android:name="com.gun0912.tedpermission.TedPermissionActivity"
             android:theme="@style/Theme.Transparent" />
 

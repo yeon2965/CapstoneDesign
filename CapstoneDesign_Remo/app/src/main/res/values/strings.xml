@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Remo</string>
     <string name="title_activity_photospot2">PhotospotActivity2</string>
+    <string name="title_activity_photospot_fragment">PhotospotFragment</string>
 </resources>

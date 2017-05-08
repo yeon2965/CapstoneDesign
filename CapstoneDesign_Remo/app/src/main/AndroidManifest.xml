@@ -50,17 +50,29 @@
         <activity
             android:name=".PeopleActivity"
             android:label="People" />
+
         <activity
             android:name=".LandscapeActivity"
             android:label="Landscape" />
+
         <activity
             android:name=".CameraActivity"
             android:label="Camera"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity
             android:name=".PhotospotActivity"
             android:label="Photospot"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name=".PhotospotFragment"
+            android:label="@string/title_activity_photospot_fragment"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity android:name=".navermap.FragmentMapActivity"
+            android:label="FragmentMap"/>
+
     </application>
 
 </manifest>

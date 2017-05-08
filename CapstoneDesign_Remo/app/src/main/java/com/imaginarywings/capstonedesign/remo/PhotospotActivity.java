@@ -1,19 +1,16 @@
 package com.imaginarywings.capstonedesign.remo;
 
 import android.Manifest;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.gun0912.tedpermission.PermissionListener;
@@ -38,7 +35,6 @@ import com.nhn.android.mapviewer.overlay.NMapCalloutOverlay;
 import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
-import com.nhn.android.mapviewer.overlay.NMapResourceProvider;
 
 import java.util.ArrayList;
 
@@ -311,12 +307,13 @@ public class PhotospotActivity extends NMapActivity {
 
         if (!isMyLocationEnabled) {
             Toast.makeText(this, "현재 위치를 가져올 수 없습니다. GPS 상태를 확인해주세요!", Toast.LENGTH_SHORT).show();
-            createSpotMarker();
+            //createSpotMarker();
         } else {
-            createSpotMarker();
+            //createSpotMarker();
         }
     }
 
+    /*
     //포토스팟 마커 생성
     private void createSpotMarker() {
         int markerId = NMapPOIflagType.PIN;
@@ -372,6 +369,7 @@ public class PhotospotActivity extends NMapActivity {
 
         mOverlayManager.addOverlay(poiDataOverlay);
     }
+    */
 
     //퍼미션 리스터 인터페이스 오버라이드
     PermissionListener permissionlistener = new PermissionListener() {

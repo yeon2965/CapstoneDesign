@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:2:1-66:12
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:2:1-78:12
 	package
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:4:5-53
 		INJECTED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml
@@ -64,7 +64,7 @@ ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\mai
 	android:name
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:31:22-70
 application
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:33:5-64:19
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:33:5-76:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\tip90\.android\build-cache\22678e74f916f50b42d1b9388cecceb26cefb6ca\output\AndroidManifest.xml:9:5-20
 MERGED from [com.naver.maps.open:naver-map-api:2.1.2] C:\Users\tip90\.android\build-cache\4eddb258dc205dbbd9b2f1f624bbcfbdebc1f7ec\output\AndroidManifest.xml:11:5-14:19
 MERGED from [gun0912.ted:tedpermission:1.0.3] C:\Users\tip90\.android\build-cache\2aca99712ef096ced60bdf339947fbb4d28536a4\output\AndroidManifest.xml:9:5-13:19
@@ -126,27 +126,41 @@ ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\mai
 	android:name
 		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:51:13-43
 activity#com.imaginarywings.capstonedesign.remo.LandscapeActivity
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:53:9-55:41
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:54:9-56:41
 	android:label
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:55:13-38
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:56:13-38
 	android:name
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:54:13-46
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:55:13-46
 activity#com.imaginarywings.capstonedesign.remo.CameraActivity
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:56:9-59:66
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:58:9-61:66
 	android:label
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:58:13-35
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:60:13-35
 	android:theme
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:59:13-63
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:61:13-63
 	android:name
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:57:13-43
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:59:13-43
 activity#com.imaginarywings.capstonedesign.remo.PhotospotActivity
-ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:60:9-63:66
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:63:9-66:66
 	android:label
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:62:13-38
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:65:13-38
 	android:theme
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:63:13-63
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:66:13-63
 	android:name
-		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:61:13-46
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:64:13-46
+activity#com.imaginarywings.capstonedesign.remo.PhotospotFragment
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:68:9-71:71
+	android:label
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:70:13-70
+	android:theme
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:71:13-69
+	android:name
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:69:13-46
+activity#com.imaginarywings.capstonedesign.remo.navermap.FragmentMapActivity
+ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:73:9-74:42
+	android:label
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:74:13-40
+	android:name
+		ADDED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml:73:19-63
 uses-sdk
 INJECTED from C:\Users\tip90\Desktop\CapstoneDesign\CapstoneDesign_Remo\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\tip90\.android\build-cache\22678e74f916f50b42d1b9388cecceb26cefb6ca\output\AndroidManifest.xml:5:5-7:41
