@@ -15,15 +15,27 @@
  */
 package com.imaginarywings.capstonedesign.remo.navermap;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+
+import com.imaginarywings.capstonedesign.remo.AddSpotActivity;
 import com.imaginarywings.capstonedesign.remo.R;
-import com.nhn.android.maps.NMapView;
+
+/**
+ * 프래그먼트 지도를 표시해 줄 프래그먼트 전용 액티비티
+ */
 
 public class FragmentMapActivity extends FragmentActivity {
 
-	private NMapView mMapView;
+    Animation FabOpen, FabClose, FabRClockwise, FabRanticlockWise;
+    private FloatingActionButton fabMain, fabAddSpot, fabMySpot, fabMylocation;
+    boolean isOpen = false;
 
     /** Called when the activity is first created. */
     @Override
@@ -32,15 +44,61 @@ public class FragmentMapActivity extends FragmentActivity {
 
         setContentView(R.layout.framents);
 
-        /*
-        mMapView = (NMapView)findViewById(R.id.mapView);
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
+        FabRanticlockWise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
 
-		// initialize map view
-		mMapView.setClickable(true);
-		mMapView.setEnabled(true);
-		mMapView.setFocusable(true);
-		mMapView.setFocusableInTouchMode(true);
-		mMapView.requestFocus();
-		*/
+        fabMain = (FloatingActionButton)findViewById(R.id.fab_main);
+        fabAddSpot = (FloatingActionButton)findViewById(R.id.fab_addspot);
+        fabMySpot = (FloatingActionButton)findViewById(R.id.fab_myspot);
+        fabMylocation = (FloatingActionButton)findViewById(R.id.fab_mylocation);
+
+        fabMain.setOnClickListener(clickListener);
+        fabAddSpot.setOnClickListener(clickListener);
+        fabMySpot.setOnClickListener(clickListener);
     }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId())
+            {
+                case R.id.fab_main :
+                    if (!isOpen)
+                    {
+                        fabMySpot.startAnimation(FabOpen);
+                        fabAddSpot.startAnimation(FabOpen);
+                        fabMylocation.startAnimation(FabOpen);
+
+                        fabMain.startAnimation(FabRClockwise);
+
+                        fabMySpot.setClickable(true);
+                        fabAddSpot.setClickable(true);
+                        fabMylocation.setClickable(true);
+                        isOpen = true;
+                    }
+                    else
+                    {
+                        fabMySpot.startAnimation(FabClose);
+                        fabAddSpot.startAnimation(FabClose);
+                        fabMylocation.startAnimation(FabClose);
+
+                        fabMain.startAnimation(FabRanticlockWise);
+
+                        fabMySpot.setClickable(false);
+                        fabAddSpot.setClickable(false);
+                        fabMylocation.setClickable(false);
+                        isOpen = false;
+                    }
+
+                    break;
+
+                case R.id.fab_addspot :
+                    Intent it_addspot = new Intent(getApplicationContext(), AddSpotActivity.class);
+                    startActivity(it_addspot);
+            }
+        }
+    };
+
 }

@@ -84,10 +84,6 @@
         "source": "C:\\Users\\tip90\\.android\\build-cache\\e255bd8108147683e1767c5600676b3685a86718\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
-        "merged": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_photospot_fragment.xml",
-        "source": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\src\\main\\res\\layout\\activity_photospot_fragment.xml"
-    },
-    {
         "merged": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
         "source": "C:\\Users\\tip90\\.android\\build-cache\\e255bd8108147683e1767c5600676b3685a86718\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
@@ -222,6 +218,10 @@
     {
         "merged": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
         "source": "C:\\Users\\tip90\\.android\\build-cache\\e255bd8108147683e1767c5600676b3685a86718\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_add_spot.xml",
+        "source": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\src\\main\\res\\layout\\activity_add_spot.xml"
     },
     {
         "merged": "C:\\Users\\tip90\\Desktop\\CapstoneDesign\\CapstoneDesign_Remo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",

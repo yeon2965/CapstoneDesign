@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
 
 	<fragment
 		android:id="@+id/fragment1"
@@ -13,27 +13,62 @@
 		android:layout_alignParentStart="true"
 		android:layout_alignParentTop="true"
 		android:layout_weight="2.20"
-		android:layout_above="@+id/fragment2" />
+		android:layout_alignParentBottom="true" />
 
-	<fragment
-		android:id="@+id/fragment2"
-		android:name="com.imaginarywings.capstonedesign.remo.navermap.Fragment2"
-		android:layout_width="match_parent"
-		android:layout_height="75dp"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentStart="true"
-		android:layout_weight="0.40" />
+	<!-- 하위 플로팅 버튼 -->
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/fab_myspot"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/fab_addspot"
+		android:layout_alignStart="@+id/fab_addspot"
+		android:layout_marginBottom="8dp"
+		android:clickable="true"
+		android:visibility="invisible"
+		app:fabSize="normal"
+		app:srcCompat="@android:drawable/ic_dialog_map" />
+
 
 	<android.support.design.widget.FloatingActionButton
-		android:id="@+id/floatingActionButton"
-		android:layout_width="match_parent"
+		android:id="@+id/fab_addspot"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginEnd="12dp"
+		android:layout_above="@+id/fab_main"
+		android:layout_alignStart="@+id/fab_main"
+		android:layout_marginBottom="8dp"
 		android:clickable="true"
+		android:visibility="invisible"
+		app:backgroundTint="@color/colorAccent"
 		app:fabSize="normal"
-		app:srcCompat="@android:drawable/ic_input_add"
+		app:srcCompat="@android:drawable/ic_menu_camera" />
+
+	<!-- 대표 플로팅 버튼 -->
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/fab_main"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentEnd="true"
-		android:layout_marginBottom="10dp" />
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="11dp"
+		android:clickable="true"
+		app:backgroundTint="@color/colorPrimary"
+		app:fabSize="normal"
+		app:srcCompat="@android:drawable/ic_input_add" />
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/fab_mylocation"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/fab_myspot"
+		android:layout_alignEnd="@+id/fab_myspot"
+		android:layout_alignStart="@+id/fab_myspot"
+		android:layout_marginBottom="10dp"
+		android:clickable="true"
+		android:visibility="invisible"
+		app:backgroundTint="?attr/colorButtonNormal"
+		app:elevation="0dp"
+		app:fabSize="normal"
+		app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
 </RelativeLayout>

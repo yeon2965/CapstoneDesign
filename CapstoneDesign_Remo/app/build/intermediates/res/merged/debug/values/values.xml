@@ -116,8 +116,8 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorAccent">#ff4081</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
@@ -739,6 +739,7 @@
     <string name="tedpermission_close">Close</string>
     <string name="tedpermission_confirm">Confirm</string>
     <string name="tedpermission_setting">Setting</string>
+    <string name="title_activity_add_spot">AddSpotActivity</string>
     <string name="title_activity_photospot2">PhotospotActivity2</string>
     <string name="title_activity_photospot_fragment">PhotospotFragment</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
