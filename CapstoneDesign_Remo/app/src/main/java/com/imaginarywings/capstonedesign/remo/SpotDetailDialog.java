@@ -1,6 +1,6 @@
 package com.imaginarywings.capstonedesign.remo;
 
-import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,7 +25,7 @@ import butterknife.OnClick;
  * Created by S.JJ on 2017-04-30.
  */
 
-public class SpotDetailDialog extends DialogFragment{
+public class SpotDetailDialog extends DialogFragment {
     @BindView(R.id.detail_image) ImageView mImage;
     @BindView(R.id.detail_address_text) TextView mAdressText;
     @BindView(R.id.detail_subject_text) TextView mSubjectText;
@@ -86,4 +86,5 @@ public class SpotDetailDialog extends DialogFragment{
 
     @OnClick(R.id.detail_close_btn)
     public void closeBtnClick() { dismiss(); }
+
 }
