@@ -1,484 +1,292 @@
 package com.imaginarywings.capstonedesign.remo;
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
+import android.hardware.Camera.Parameters;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Build;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Surface;
-import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
-import java.io.ByteArrayOutputStream;
+import com.imaginarywings.capstonedesign.remo.utils.CameraHelper;
+import com.imaginarywings.capstonedesign.remo.utils.CameraHelper.CameraInfo2;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-/**
- * Created by S.JJ on 2017-04-07.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import jp.co.cyberagent.android.gpuimage.GPUImage;
+import jp.co.cyberagent.android.gpuimage.GPUImage.OnPictureSavedListener;
+import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 
-public class CameraActivity extends AppCompatActivity {
-    private static final String TAG = "CameraActivity";
-    Preview preview;
-    Camera camera;
-    Context ctx;
 
-    private final static int PERMISSIONS_REQUEST_CODE = 100;
-    private final static int CAMERA_FACING = Camera.CameraInfo.CAMERA_FACING_BACK;
-    private AppCompatActivity mActivity;
+
+public class CameraActivity extends AppCompatActivity implements OnClickListener {
+    private final String TAG = getClass().getSimpleName();
+
+    @BindView(R.id.camera_preview) GLSurfaceView mCameraPreview;
+    @BindView(R.id.camera_guide) ImageView mGuideImage;
+
+
+    private GPUImage mGPUImage;
+    private CameraHelper mCameraHelper;
+    private CameraLoader mCamera;
+    private GPUImageFilter mFilter;
+    private GPUImageFilterTools.FilterAdjuster mFilterAdjuster;
+    ImageButton btnCapture;
+    ImageButton btnSwitch;
+    //ImageButton btnGallery;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ctx = this;
-        mActivity = this;
-
-        //상태바 없애기
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
-                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         setContentView(R.layout.activity_camera);
+        ButterKnife.bind(this);
 
-        //캡처 버튼을 누르면 촬영
-        Button button = (Button) findViewById(R.id.btnCapture);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                camera.takePicture(shutterCallback, rawCallback, jpegCallback);
-            }
-        });
+        mGPUImage = new GPUImage(this);
+        mGPUImage.setGLSurfaceView(mCameraPreview);
 
+        mCameraHelper = new CameraHelper(this);
+        mCamera = new CameraLoader();
 
-        if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+        btnCapture = (ImageButton) findViewById(R.id.btnCapture);
+        btnCapture.setOnClickListener(this) ;
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {   //API 23 이상이면
-                // 런타임 퍼미션 처리 필요
+        btnSwitch = (ImageButton) findViewById(R.id.btnSwitch);
+        btnSwitch.setOnClickListener(this) ;
 
-                int hasCameraPermission = ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.CAMERA);
-
-                int hasWriteExternalStoragePermission =
-                        ContextCompat.checkSelfPermission(this,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-                if (hasCameraPermission == PackageManager.PERMISSION_GRANTED
-                        && hasWriteExternalStoragePermission == PackageManager.PERMISSION_GRANTED) {
-                    ;//이미 퍼미션을 가지고 있음
-                } else {
-                    //퍼미션 요청
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.CAMERA,
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            PERMISSIONS_REQUEST_CODE);
-                }
-            } else {
-                ;
-            }
-
-
-        } else {
-            Toast.makeText(CameraActivity.this, "Camera not supported",
-                    Toast.LENGTH_LONG).show();
-        }
-
-
-    }
-
-
-    public static void doRestart(Context c) {
-        //http://stackoverflow.com/a/22345538
-        try {
-            //check if the context is given
-            if (c != null) {
-                //fetch the packagemanager so we can get the default launch activity
-                // (you can replace this intent with any other activity if you want
-                PackageManager pm = c.getPackageManager();
-                //check if we got the PackageManager
-                if (pm != null) {
-                    //create the intent with the default start activity for your application
-                    Intent mStartActivity = pm.getLaunchIntentForPackage(
-                            c.getPackageName()
-                    );
-                    if (mStartActivity != null) {
-                        mStartActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        //create a pending intent so the application is restarted
-                        // after System.exit(0) was called.
-                        // We use an AlarmManager to call this intent in 100ms
-                        int mPendingIntentId = 223344;
-                        PendingIntent mPendingIntent = PendingIntent
-                                .getActivity(c, mPendingIntentId, mStartActivity,
-                                        PendingIntent.FLAG_CANCEL_CURRENT);
-                        AlarmManager mgr =
-                                (AlarmManager) c.getSystemService(Context.ALARM_SERVICE);
-                        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-                        //kill the application
-                        System.exit(0);
-                    } else {
-                        Log.e(TAG, "Was not able to restart application, " +
-                                "mStartActivity null");
-                    }
-                } else {
-                    Log.e(TAG, "Was not able to restart application, PM null");
-                }
-            } else {
-                Log.e(TAG, "Was not able to restart application, Context null");
-            }
-        } catch (Exception ex) {
-            Log.e(TAG, "Was not able to restart application");
+        //화면 전환
+        View cameraSwitchView = findViewById(R.id.btnSwitch);
+        cameraSwitchView.setOnClickListener(this);
+        if (!mCameraHelper.hasFrontCamera() || !mCameraHelper.hasBackCamera()) {
+            cameraSwitchView.setVisibility(View.GONE);
         }
     }
-
-    public void startCamera() {
-
-        if (preview == null) {
-            preview = new Preview(this, (SurfaceView) findViewById(R.id.surfaceView));
-            preview.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT));
-            ((FrameLayout) findViewById(R.id.layout)).addView(preview);
-            preview.setKeepScreenOn(true);
-
-            /* 프리뷰 화면 눌렀을 때  사진을 찍음
-            preview.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View arg0) {
-                    camera.takePicture(shutterCallback, rawCallback, jpegCallback);
-                }
-            });*/
-        }
-
-        preview.setCamera(null);
-        if (camera != null) {
-            camera.release();
-            camera = null;
-        }
-
-        int numCams = Camera.getNumberOfCameras();
-        if (numCams > 0) {
-            try {
-
-                camera = Camera.open(CAMERA_FACING);
-                // camera orientation
-                camera.setDisplayOrientation(setCameraDisplayOrientation(this, CAMERA_FACING,
-                        camera));
-                // get Camera parameters
-                Camera.Parameters params = camera.getParameters();
-                // picture image orientation
-                params.setRotation(setCameraDisplayOrientation(this, CAMERA_FACING, camera));
-                camera.startPreview();
-
-            } catch (RuntimeException ex) {
-                /* 이부분 토스트 메시지가 뜨는데 왜 뜨게 했는지 이해가 안감...
-                Toast.makeText(ctx, "camera_not_found " + ex.getMessage().toString(),
-                        Toast.LENGTH_LONG).show();
-                Log.d(TAG, "camera_not_found " + ex.getMessage().toString());
-                */
-            }
-        }
-
-        preview.setCamera(camera);
-    }
-
 
     @Override
     protected void onResume() {
+        mCamera.onResume();
         super.onResume();
-
-        startCamera();
     }
 
     @Override
     protected void onPause() {
+        mCamera.onPause();
         super.onPause();
-
-        // Surface will be destroyed when we return, so stop the preview.
-        if (camera != null) {
-            // Call stopPreview() to stop updating the preview surface
-            camera.stopPreview();
-            preview.setCamera(null);
-            camera.release();
-            camera = null;
-        }
-
-        ((FrameLayout) findViewById(R.id.layout)).removeView(preview);
-        preview = null;
-
     }
 
-    private void resetCam() {
-        startCamera();
+    //버튼 별 기능
+    @Override
+    public void onClick(final View v) {
+        switch (v.getId()) {
+//            case R.id.button_choose_filter:
+//                GPUImageFilterTools.showDialog(this, new OnGpuImageFilterChosenListener() {
+//
+//                    @Override
+//                    public void onGpuImageFilterChosenListener(final GPUImageFilter filter) {
+//                        switchFilterTo(filter);
+//                    }
+//                });
+//                break;
+
+            case R.id.btnCapture:
+                if (mCamera.mCameraInstance.getParameters().getFocusMode().equals(
+                        Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                    takePicture();
+                } else {
+                    mCamera.mCameraInstance.autoFocus(new Camera.AutoFocusCallback() {
+
+                        @Override
+                        public void onAutoFocus(final boolean success, final Camera camera) {
+                            takePicture();
+                        }
+                    });
+                }
+                break;
+
+            case R.id.btnSwitch:
+                mCamera.switchCamera();
+                break;
+        }
     }
 
-    private void refreshGallery(File file) {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        mediaScanIntent.setData(Uri.fromFile(file));
-        sendBroadcast(mediaScanIntent);
+    private void takePicture() {
+        // TODO get a size that is about the size of the screen
+        Camera.Parameters params = mCamera.mCameraInstance.getParameters();
+        params.setRotation(90);
+        mCamera.mCameraInstance.setParameters(params);
+        for (Camera.Size size : params.getSupportedPictureSizes()) {
+            Log.i("ASDF", "Supported: " + size.width + "x" + size.height);
+        }
+        mCamera.mCameraInstance.takePicture(null, null,
+                new Camera.PictureCallback() {
+
+                    @Override
+                    public void onPictureTaken(byte[] data, final Camera camera) {
+
+                        final File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+                        if (pictureFile == null) {
+                            Log.d("ASDF",
+                                    "Error creating media file, check storage permissions");
+                            return;
+                        }
+
+                        //사진 회전
+//                        int w = camera.getParameters().getPictureSize().width;
+//                        int h = camera.getParameters().getPictureSize().height;
+//
+//                        int orientation = setCameraDisplayOrientation(CameraActivity.this, CAMERA_FACING, camera);
+//
+//
+//                        //byte array를 bitmap으로 변환
+//                        BitmapFactory.Options options = new BitmapFactory.Options();
+//                        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+//                        Bitmap bitmap = BitmapFactory.decodeByteArray( data, 0, data.length, options);
+//
+//                        //이미지를 디바이스 방향으로 회전
+//                        Matrix matrix = new Matrix();
+//                        matrix.postRotate(orientation);
+//                        bitmap =  Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
+
+
+                        try {
+                            FileOutputStream fos = new FileOutputStream(pictureFile);
+                            fos.write(data);
+                            fos.close();
+                        } catch (FileNotFoundException e) {
+                            Log.d("ASDF", "File not found: " + e.getMessage());
+                        } catch (IOException e) {
+                            Log.d("ASDF", "Error accessing file: " + e.getMessage());
+                        }
+
+                        data = null;
+                        Bitmap bitmap = BitmapFactory.decodeFile(pictureFile.getAbsolutePath());
+                        // mGPUImage.setImage(bitmap);
+                        final GLSurfaceView view = mCameraPreview; //여기 이상
+
+                        view.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+                        mGPUImage.saveToPictures(bitmap, "GPUImage",
+                                System.currentTimeMillis() + ".jpg",
+                                new OnPictureSavedListener() {
+
+                                    @Override
+                                    public void onPictureSaved(final Uri
+                                                                       uri) {
+                                        pictureFile.delete();
+                                        camera.startPreview();
+                                        view.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+                                    }
+                                });
+                    }
+                });
     }
 
-    Camera.ShutterCallback shutterCallback = new Camera.ShutterCallback() {
-        public void onShutter() {
-            Log.d(TAG, "onShutter'd");
-        }
-    };
-
-    Camera.PictureCallback rawCallback = new Camera.PictureCallback() {
-        public void onPictureTaken(byte[] data, Camera camera) {
-            Log.d(TAG, "onPictureTaken - raw");
-        }
-    };
 
 
-    //참고 : http://stackoverflow.com/q/37135675
-    Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
-        public void onPictureTaken(byte[] data, Camera camera) {
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
 
-            //이미지의 너비와 높이 결정
-            int w = camera.getParameters().getPictureSize().width;
-            int h = camera.getParameters().getPictureSize().height;
+    private static File getOutputMediaFile(final int type) {
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
 
-            int orientation = setCameraDisplayOrientation(CameraActivity.this,
-                    CAMERA_FACING, camera);
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES), "MyCameraApp");
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
 
-            //byte array를 bitmap으로 변환
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length, options);
-            //int w = bitmap.getWidth();
-            //int h = bitmap.getHeight();
-
-            //이미지를 디바이스 방향으로 회전
-            Matrix matrix = new Matrix();
-            matrix.postRotate(orientation);
-            bitmap = Bitmap.createBitmap(bitmap, 0, 0, w, h, matrix, true);
-
-            //bitmap을 byte array로 변환
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] currentData = stream.toByteArray();
-
-            //파일로 저장
-            new SaveImageTask().execute(currentData);
-            resetCam();
-            Log.d(TAG, "onPictureTaken - jpeg");
-        }
-    };
-
-    private class SaveImageTask extends AsyncTask<byte[], Void, Void> {
-
-        @Override
-        protected Void doInBackground(byte[]... data) {
-            FileOutputStream outStream = null;
-
-            // Write to SD Card
-            try {
-                File sdCard = Environment.getExternalStorageDirectory();
-                File dir = new File(sdCard.getAbsolutePath() + "/camtest");
-                dir.mkdirs();
-
-                String fileName = String.format("%d.jpg", System.currentTimeMillis());
-                File outFile = new File(dir, fileName);
-
-                outStream = new FileOutputStream(outFile);
-                outStream.write(data[0]);
-                outStream.flush();
-                outStream.close();
-
-                Log.d(TAG, "onPictureTaken - wrote bytes: " + data.length + " to "
-                        + outFile.getAbsolutePath());
-
-                refreshGallery(outFile);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("MyCameraApp", "failed to create directory");
+                return null;
             }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "IMG_" + timeStamp + ".jpg");
+        } else if (type == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+                    "VID_" + timeStamp + ".mp4");
+        } else {
             return null;
         }
 
+        return mediaFile;
     }
 
-    /**
-     * @param activity
-     * @param cameraId Camera.CameraInfo.CAMERA_FACING_FRONT,
-     *                 Camera.CameraInfo.CAMERA_FACING_BACK
-     * @param camera   Camera Orientation
-     *                 reference by https://developer.android.com/reference/android/hardware/Camera.html
-     */
-    public static int setCameraDisplayOrientation(Activity activity,
-                                                  int cameraId, android.hardware.Camera camera) {
-        android.hardware.Camera.CameraInfo info =
-                new android.hardware.Camera.CameraInfo();
-        android.hardware.Camera.getCameraInfo(cameraId, info);
-        int rotation = activity.getWindowManager().getDefaultDisplay()
-                .getRotation();
-        int degrees = 0;
-        switch (rotation) {
-            case Surface.ROTATION_0:
-                degrees = 0;
-                break;
-            case Surface.ROTATION_90:
-                degrees = 90;
-                break;
-            case Surface.ROTATION_180:
-                degrees = 180;
-                break;
-            case Surface.ROTATION_270:
-                degrees = 270;
-                break;
+
+    private class CameraLoader {
+
+        private int mCurrentCameraId = 0;
+        private Camera mCameraInstance;
+
+        public void onResume() {
+            setUpCamera(mCurrentCameraId);
         }
 
-        int result;
-        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-            result = (info.orientation + degrees) % 360;
-            result = (360 - result) % 360;  // compensate the mirror
-        } else {  // back-facing
-            result = (info.orientation - degrees + 360) % 360;
+        public void onPause() {
+            releaseCamera();
         }
 
-        return result;
-    }
+        public void switchCamera() {
+            releaseCamera();
+            mCurrentCameraId = (mCurrentCameraId + 1) % mCameraHelper.getNumberOfCameras();
+            setUpCamera(mCurrentCameraId);
+        }
 
-    /*
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grandResults) {
-
-        if ( requestCode == PERMISSIONS_REQUEST_CODE && grandResults.length > 0) {
-
-            //먼저 카메라가 권한을 갖고 있는지 체크함.
-            int hasCameraPermission = ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.CAMERA);
-
-            //외부 저장소를 이용할 수 있는 권한을 갖고 있는지 체크함.
-            int hasWriteExternalStoragePermission =
-                    ContextCompat.checkSelfPermission(this,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-            if ( hasCameraPermission == PackageManager.PERMISSION_GRANTED
-                    && hasWriteExternalStoragePermission == PackageManager.PERMISSION_GRANTED )
-            {
-                //이미 퍼미션을 가지고 있음
-                doRestart(this);
+        private void setUpCamera(final int id) {
+            mCameraInstance = getCameraInstance(id);
+            Parameters parameters = mCameraInstance.getParameters();
+            // TODO adjust by getting supportedPreviewSizes and then choosing
+            // the best one for screen size (best fill screen)
+            if (parameters.getSupportedFocusModes().contains(
+                    Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                parameters.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
             }
-            else
-            {
-                checkPermissions();
-            }
+            mCameraInstance.setParameters(parameters);
+
+            int orientation = mCameraHelper.getCameraDisplayOrientation(
+                    CameraActivity.this, mCurrentCameraId);
+            CameraInfo2 cameraInfo = new CameraInfo2();
+            mCameraHelper.getCameraInfo(mCurrentCameraId, cameraInfo);
+            boolean flipHorizontal = cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT;
+            mGPUImage.setUpCamera(mCameraInstance, orientation, flipHorizontal, false);
         }
 
-    }*/
+        /** A safe way to get an instance of the Camera object. */
+        private Camera getCameraInstance(final int id) {
+            Camera c = null;
+            try {
+                c = mCameraHelper.openCamera(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return c;
+        }
 
-
-    @TargetApi(Build.VERSION_CODES.M)
-    private void checkPermissions() {
-        int hasCameraPermission = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA);
-        int hasWriteExternalStoragePermission =
-                ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-        boolean cameraRationale = ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.CAMERA);
-        boolean writeExternalStorageRationale =
-                ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-
-        if ((hasCameraPermission == PackageManager.PERMISSION_DENIED && cameraRationale)
-                || (hasWriteExternalStoragePermission == PackageManager.PERMISSION_DENIED
-                && writeExternalStorageRationale))
-            showDialogForPermission("앱을 실행하려면 퍼미션을 허가하셔야합니다.");
-
-        else if ((hasCameraPermission == PackageManager.PERMISSION_DENIED && !cameraRationale)
-                || (hasWriteExternalStoragePermission == PackageManager.PERMISSION_DENIED
-                && !writeExternalStorageRationale))
-            showDialogForPermissionSetting("퍼미션 거부 + Don't ask again(다시 묻지 않음) " +
-                    "체크 박스를 설정한 경우로 설정에서 퍼미션 허가해야합니다.");
-
-        else if (hasCameraPermission == PackageManager.PERMISSION_GRANTED
-                || hasWriteExternalStoragePermission == PackageManager.PERMISSION_GRANTED) {
-            doRestart(this);
+        private void releaseCamera() {
+            mCameraInstance.setPreviewCallback(null);
+            mCameraInstance.release();
+            mCameraInstance = null;
         }
     }
 
-
-    @TargetApi(Build.VERSION_CODES.M)
-    private void showDialogForPermission(String msg) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(CameraActivity.this);
-        builder.setTitle("알림");
-        builder.setMessage(msg);
-        builder.setCancelable(false);
-        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                //퍼미션 요청
-                ActivityCompat.requestPermissions(CameraActivity.this,
-                        new String[]{Manifest.permission.CAMERA,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        PERMISSIONS_REQUEST_CODE);
-            }
-        });
-
-        builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                finish();
-            }
-        });
-        builder.create().show();
-    }
-
-    private void showDialogForPermissionSetting(String msg) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(CameraActivity.this);
-        builder.setTitle("알림");
-        builder.setMessage(msg);
-        builder.setCancelable(true);
-        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-
-                Intent myAppSettings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.parse("package:" + mActivity.getPackageName()));
-                myAppSettings.addCategory(Intent.CATEGORY_DEFAULT);
-                myAppSettings.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mActivity.startActivity(myAppSettings);
-            }
-        });
-        builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                finish();
-            }
-        });
-        builder.create().show();
-    }
 }

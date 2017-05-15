@@ -1,7 +1,0 @@
-#Sat Apr 08 15:10:52 KST 2017
-base.0=D\:\\AndroidWorkspace\\CapstoneDesign_Remo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_a9ae298c195a1a462d0566592bc606c17f1e8f67
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=D\:\\AndroidWorkspace\\CapstoneDesign_Remo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_a08b4199c7736242d7de6bd8665bef33e400af6b\\classes.dex
-base.1=D\:\\AndroidWorkspace\\CapstoneDesign_Remo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_a08b4199c7736242d7de6bd8665bef33e400af6b
-file.0=D\:\\AndroidWorkspace\\CapstoneDesign_Remo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_a9ae298c195a1a462d0566592bc606c17f1e8f67\\classes.dex
